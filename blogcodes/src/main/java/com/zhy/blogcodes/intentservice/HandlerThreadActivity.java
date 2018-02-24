@@ -11,8 +11,7 @@ import android.widget.TextView;
 import com.zhy.blogcodes.R;
 
 
-public class HandlerThreadActivity extends AppCompatActivity
-{
+public class HandlerThreadActivity extends AppCompatActivity {
 
     private TextView mTvServiceInfo;
 
@@ -27,8 +26,7 @@ public class HandlerThreadActivity extends AppCompatActivity
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread_handler);
 
@@ -40,8 +38,7 @@ public class HandlerThreadActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         //开始查询
         isUpdateInfo = true;
@@ -49,8 +46,7 @@ public class HandlerThreadActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
         //停止查询
         isUpdateInfo = false;
@@ -58,18 +54,14 @@ public class HandlerThreadActivity extends AppCompatActivity
 
     }
 
-    private void initBackThread()
-    {
+    private void initBackThread() {
         mCheckMsgThread = new HandlerThread("check-message-coming");
         mCheckMsgThread.start();
-        mCheckMsgHandler = new Handler(mCheckMsgThread.getLooper())
-        {
+        mCheckMsgHandler = new Handler(mCheckMsgThread.getLooper()) {
             @Override
-            public void handleMessage(Message msg)
-            {
+            public void handleMessage(Message msg) {
                 checkForUpdate();
-                if (isUpdateInfo)
-                {
+                if (isUpdateInfo) {
                     mCheckMsgHandler.sendEmptyMessageDelayed(MSG_UPDATE_INFO, 1000);
                 }
             }
@@ -81,33 +73,27 @@ public class HandlerThreadActivity extends AppCompatActivity
     /**
      * 模拟从服务器解析数据
      */
-    private void checkForUpdate()
-    {
-        try
-        {
+    private void checkForUpdate() {
+        try {
             //模拟耗时
             Thread.sleep(1000);
-            mHandler.post(new Runnable()
-            {
+            mHandler.post(new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     String result = "实时更新中，当前大盘指数：<font color='red'>%d</font>";
                     result = String.format(result, (int) (Math.random() * 3000 + 1000));
                     mTvServiceInfo.setText(Html.fromHtml(result));
                 }
             });
 
-        } catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         //释放资源
         mCheckMsgThread.quit();

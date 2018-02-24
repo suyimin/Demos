@@ -14,20 +14,16 @@ import android.widget.TextView;
 
 import com.zhy.blogcodes.R;
 
-public class IntentServiceActivity extends AppCompatActivity
-{
+public class IntentServiceActivity extends AppCompatActivity {
 
     public static final String UPLOAD_RESULT = "com.zhy.blogcodes.intentservice.UPLOAD_RESULT";
 
     private LinearLayout mLyTaskContainer;
 
-    private BroadcastReceiver uploadImgReceiver = new BroadcastReceiver()
-    {
+    private BroadcastReceiver uploadImgReceiver = new BroadcastReceiver() {
         @Override
-        public void onReceive(Context context, Intent intent)
-        {
-            if (intent.getAction() == UPLOAD_RESULT)
-            {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() == UPLOAD_RESULT) {
                 String path = intent.getStringExtra(UploadImgService.EXTRA_IMG_PATH);
 
                 handleResult(path);
@@ -37,16 +33,14 @@ public class IntentServiceActivity extends AppCompatActivity
         }
     };
 
-    private void handleResult(String path)
-    {
+    private void handleResult(String path) {
         TextView tv = (TextView) mLyTaskContainer.findViewWithTag(path);
         tv.setText(path + " upload success ~~~ ");
     }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intent_service);
 
@@ -55,8 +49,7 @@ public class IntentServiceActivity extends AppCompatActivity
         registerReceiver();
     }
 
-    private void registerReceiver()
-    {
+    private void registerReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(UPLOAD_RESULT);
         registerReceiver(uploadImgReceiver, filter);
@@ -64,8 +57,7 @@ public class IntentServiceActivity extends AppCompatActivity
 
     int i = 0;
 
-    public void addTask(View view)
-    {
+    public void addTask(View view) {
         //模拟路径
         String path = "/sdcard/imgs/" + (++i) + ".png";
         UploadImgService.startUploadImg(this, path);
@@ -78,31 +70,27 @@ public class IntentServiceActivity extends AppCompatActivity
 
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(uploadImgReceiver);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_intent, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
-        {
+        if (id == R.id.action_settings) {
             return true;
         }
 
