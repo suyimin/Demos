@@ -1,4 +1,4 @@
-<com.zhy.blogcodes.vdh.VDHLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.xdroid.blogcodes.vdh.VDHLayout xmlns:android="http://schemas.android.com/apk/res/android"
                               xmlns:tools="http://schemas.android.com/tools"
                               android:layout_width="match_parent"
                               android:orientation="vertical"
@@ -35,4 +35,4 @@
         android:layout_width="100dp"
         android:layout_height="100dp"/>
 
-</com.zhy.blogcodes.vdh.VDHLayout>
+</com.xdroid.blogcodes.vdh.VDHLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.zhy.blogcodes"
+<manifest package="com.xdroid.blogcodes"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".CategoryActivity"
+            android:name="com.xdroid.blogcodes.CategoryActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -20,76 +20,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".nav.NavigationViewActivity"
+            android:name="com.xdroid.blogcodes.nav.NavigationViewActivity"
             android:label="@string/title_activity_category"
             android:theme="@style/Theme.DesignDemo">
         </activity>
         <activity
-            android:name=".nav.NavListViewActivity"
+            android:name="com.xdroid.blogcodes.nav.NavListViewActivity"
             android:label="@string/title_activity_base_content"
             android:theme="@style/Theme.DesignDemo">
         </activity>
-        <activity android:name=".vdh.VDHBlogActivity"/>
+        <activity android:name="com.xdroid.blogcodes.vdh.VDHBlogActivity"/>
         <activity
-            android:name=".mvp.UserLoginActivity"
+            android:name="com.xdroid.blogcodes.mvp.UserLoginActivity"
             android:label="@string/title_activity_user_login">
         </activity>
         <activity
-            android:name=".dl.DLCategoryActivity"
+            android:name="com.xdroid.blogcodes.dl.DLCategoryActivity"
             android:label="@string/title_activity_dlactivity01">
         </activity>
         <activity
-            android:name=".dl.DLActivity01"
+            android:name="com.xdroid.blogcodes.dl.DLActivity01"
             android:label="@string/title_activity_dlactivity01">
         </activity>
         <activity
-            android:name=".dl.DLProxyActivity"
+            android:name="com.xdroid.blogcodes.dl.DLProxyActivity"
             android:label="@string/title_activity_dlbase"
             android:theme="@android:style/Theme.Light">
         </activity>
         <activity
-            android:name=".intentservice.HandlerThreadActivity"
+            android:name="com.xdroid.blogcodes.intentservice.HandlerThreadActivity"
             android:label="@string/title_activity_thread_handler">
         </activity>
 
         <service
-            android:name=".intentservice.UploadImgService"
+            android:name="com.xdroid.blogcodes.intentservice.UploadImgService"
             android:exported="false">
         </service>
 
         <activity
-            android:name=".intentservice.IntentServiceActivity"
+            android:name="com.xdroid.blogcodes.intentservice.IntentServiceActivity"
             android:label="@string/title_activity_intent_service">
         </activity>
         <activity
-            android:name=".colour_app_01.ColourImageActivity"
+            android:name="com.xdroid.blogcodes.colour_app_01.ColourImageActivity"
             android:label="@string/title_activity_colour_image">
         </activity>
-        <activity android:name=".performance_01.PerformanceMainActivity">
+        <activity android:name="com.xdroid.blogcodes.performance_01.PerformanceMainActivity">
         </activity>
-        <activity android:name=".performance_01.OverDrawActivity01"/>
-        <activity android:name=".performance_01.OverDrawActivity02"/>
-        <activity android:name=".performance_01.CompareLayoutActivity"/>
+        <activity android:name="com.xdroid.blogcodes.performance_01.OverDrawActivity01"/>
+        <activity android:name="com.xdroid.blogcodes.performance_01.OverDrawActivity02"/>
+        <activity android:name="com.xdroid.blogcodes.performance_01.CompareLayoutActivity"/>
         <activity
-            android:name=".toolbar.ToolBarMainActivity"
+            android:name="com.xdroid.blogcodes.toolbar.ToolBarMainActivity"
             android:theme="@style/NoActionBarTheme"/>
         <activity
-            android:name=".test.MainTestActivity"
+            android:name="com.xdroid.blogcodes.test.MainTestActivity"
             android:label="@string/title_activity_main_test">
         </activity>
         <activity
-            android:name=".jni.Jni01Activity"
+            android:name="com.xdroid.blogcodes.jni.Jni01Activity"
             android:label="@string/title_activity_jni01">
         </activity>
-        <activity android:name=".vdh.LeftDrawerLayoutActivity"/>
+        <activity android:name="com.xdroid.blogcodes.vdh.LeftDrawerLayoutActivity"/>
         <activity
 
-            android:name=".largeImage.LargeImageViewActivity"
+            android:name="com.xdroid.blogcodes.largeImage.LargeImageViewActivity"
             android:label="LargeImageViewActivity">
         </activity>
         <activity
             android:theme="@style/NoActionBarTheme"
-            android:name=".parallax_viewpager.ParallaxVpTestActivity">
+            android:name="com.xdroid.blogcodes.parallax_viewpager.ParallaxVpTestActivity">
         </activity>
     </application>
 

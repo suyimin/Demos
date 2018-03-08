@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 >
 
-    <com.zhy.blogcodes.parallax_viewpager.CustomViewPager
+    <com.xdroid.blogcodes.parallax_viewpager.CustomViewPager
         android:id="@+id/id_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
