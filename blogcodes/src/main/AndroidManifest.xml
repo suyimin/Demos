@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.xdroid.blogcodes"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xdroid.blogcodes">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,83 +14,76 @@
             android:name="com.xdroid.blogcodes.CategoryActivity"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.xdroid.blogcodes.nav.NavigationViewActivity"
             android:label="@string/title_activity_category"
-            android:theme="@style/Theme.DesignDemo">
-        </activity>
+            android:theme="@style/Theme.DesignDemo"></activity>
         <activity
             android:name="com.xdroid.blogcodes.nav.NavListViewActivity"
             android:label="@string/title_activity_base_content"
-            android:theme="@style/Theme.DesignDemo">
-        </activity>
-        <activity android:name="com.xdroid.blogcodes.vdh.VDHBlogActivity"/>
+            android:theme="@style/Theme.DesignDemo"></activity>
+        <activity android:name="com.xdroid.blogcodes.vdh.VDHBlogActivity" />
         <activity
             android:name="com.xdroid.blogcodes.mvp.UserLoginActivity"
-            android:label="@string/title_activity_user_login">
-        </activity>
+            android:label="@string/title_activity_user_login"></activity>
         <activity
             android:name="com.xdroid.blogcodes.dl.DLCategoryActivity"
-            android:label="@string/title_activity_dlactivity01">
-        </activity>
+            android:label="@string/title_activity_dlactivity01"></activity>
         <activity
             android:name="com.xdroid.blogcodes.dl.DLActivity01"
-            android:label="@string/title_activity_dlactivity01">
-        </activity>
+            android:label="@string/title_activity_dlactivity01"></activity>
         <activity
             android:name="com.xdroid.blogcodes.dl.DLProxyActivity"
             android:label="@string/title_activity_dlbase"
-            android:theme="@android:style/Theme.Light">
-        </activity>
+            android:theme="@android:style/Theme.Light"></activity>
         <activity
             android:name="com.xdroid.blogcodes.intentservice.HandlerThreadActivity"
-            android:label="@string/title_activity_thread_handler">
-        </activity>
+            android:label="@string/title_activity_thread_handler"></activity>
 
         <service
             android:name="com.xdroid.blogcodes.intentservice.UploadImgService"
-            android:exported="false">
-        </service>
+            android:exported="false"></service>
 
         <activity
             android:name="com.xdroid.blogcodes.intentservice.IntentServiceActivity"
-            android:label="@string/title_activity_intent_service">
-        </activity>
+            android:label="@string/title_activity_intent_service"></activity>
         <activity
             android:name="com.xdroid.blogcodes.colour_app_01.ColourImageActivity"
-            android:label="@string/title_activity_colour_image">
-        </activity>
-        <activity android:name="com.xdroid.blogcodes.performance_01.PerformanceMainActivity">
-        </activity>
-        <activity android:name="com.xdroid.blogcodes.performance_01.OverDrawActivity01"/>
-        <activity android:name="com.xdroid.blogcodes.performance_01.OverDrawActivity02"/>
-        <activity android:name="com.xdroid.blogcodes.performance_01.CompareLayoutActivity"/>
+            android:label="@string/title_activity_colour_image"></activity>
+        <activity android:name="com.xdroid.blogcodes.performance_01.PerformanceMainActivity"></activity>
+        <activity android:name="com.xdroid.blogcodes.performance_01.OverDrawActivity01" />
+        <activity android:name="com.xdroid.blogcodes.performance_01.OverDrawActivity02" />
+        <activity android:name="com.xdroid.blogcodes.performance_01.CompareLayoutActivity" />
         <activity
             android:name="com.xdroid.blogcodes.toolbar.ToolBarMainActivity"
-            android:theme="@style/NoActionBarTheme"/>
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name="com.xdroid.blogcodes.test.MainTestActivity"
-            android:label="@string/title_activity_main_test">
-        </activity>
+            android:label="@string/title_activity_main_test"></activity>
         <activity
             android:name="com.xdroid.blogcodes.jni.Jni01Activity"
-            android:label="@string/title_activity_jni01">
-        </activity>
-        <activity android:name="com.xdroid.blogcodes.vdh.LeftDrawerLayoutActivity"/>
+            android:label="@string/title_activity_jni01"></activity>
+        <activity android:name="com.xdroid.blogcodes.vdh.LeftDrawerLayoutActivity" />
         <activity
 
             android:name="com.xdroid.blogcodes.largeImage.LargeImageViewActivity"
-            android:label="LargeImageViewActivity">
-        </activity>
+            android:label="LargeImageViewActivity"></activity>
         <activity
-            android:theme="@style/NoActionBarTheme"
-            android:name="com.xdroid.blogcodes.parallax_viewpager.ParallaxVpTestActivity">
+            android:name="com.xdroid.blogcodes.parallax_viewpager.ParallaxVpTestActivity"
+            android:theme="@style/NoActionBarTheme"></activity>
+
+        <activity android:name="com.xdroid.blogcodes.refresh.recyclerview.RecyclerViewActivity">
+
         </activity>
+        <activity android:name="com.xdroid.blogcodes.refresh.listview.ListViewActivity">
+
+        </activity>
+        <activity android:name="com.xdroid.blogcodes.refresh.RefreshActivity"></activity>
     </application>
 
 </manifest>

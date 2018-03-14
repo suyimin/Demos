@@ -21,13 +21,13 @@ import com.xdroid.blogcodes.nav.NavListViewActivity;
 import com.xdroid.blogcodes.nav.NavigationViewActivity;
 import com.xdroid.blogcodes.parallax_viewpager.ParallaxVpTestActivity;
 import com.xdroid.blogcodes.performance_01.PerformanceMainActivity;
+import com.xdroid.blogcodes.refresh.RefreshActivity;
 import com.xdroid.blogcodes.toolbar.ToolBarMainActivity;
 import com.xdroid.blogcodes.vdh.LeftDrawerLayoutActivity;
 import com.xdroid.blogcodes.vdh.VDHBlogActivity;
 
 
-public class CategoryActivity extends ActionBarActivity
-{
+public class CategoryActivity extends ActionBarActivity {
     private ListView mListView;
 
     private LayoutInflater mInflater;
@@ -49,13 +49,12 @@ public class CategoryActivity extends ActionBarActivity
                     Jni01Activity.class,
                     LeftDrawerLayoutActivity.class,
                     LargeImageViewActivity.class,
-                    ParallaxVpTestActivity.class
-
+                    ParallaxVpTestActivity.class,
+                    RefreshActivity.class
             };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
@@ -63,14 +62,11 @@ public class CategoryActivity extends ActionBarActivity
 
         mListView = (ListView) findViewById(R.id.id_listview);
 
-        mListView.setAdapter(new ArrayAdapter<Class>(this, -1, CLAZZES)
-                             {
+        mListView.setAdapter(new ArrayAdapter<Class>(this, -1, CLAZZES) {
                                  @Override
-                                 public View getView(int position, View convertView, ViewGroup parent)
-                                 {
+                                 public View getView(int position, View convertView, ViewGroup parent) {
                                      String title = getItem(position).getSimpleName();
-                                     if (convertView == null)
-                                     {
+                                     if (convertView == null) {
                                          convertView = mInflater.inflate(R.layout.item_category, parent, false);
                                      }
                                      TextView tv = (TextView) convertView.findViewById(R.id.id_title);
@@ -81,11 +77,9 @@ public class CategoryActivity extends ActionBarActivity
 
         );
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this, CLAZZES[position]);
                 intent.putExtra(BaseContentActivity.TITLE, CLAZZES[position].getSimpleName());
                 startActivity(intent);
