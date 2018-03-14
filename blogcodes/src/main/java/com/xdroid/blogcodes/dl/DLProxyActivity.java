@@ -18,8 +18,7 @@ import java.lang.reflect.Method;
 
 import dalvik.system.DexClassLoader;
 
-public class DLProxyActivity extends Activity
-{
+public class DLProxyActivity extends Activity {
 
     public static final String KEY_APK_PATH = "apk_path";
     public static final String KEY_APK_RUNNTIME_ACTIVITY = "activity_class";
@@ -37,14 +36,12 @@ public class DLProxyActivity extends Activity
     private Resources.Theme mTheme;
 
     @Override
-    public Resources.Theme getTheme()
-    {
+    public Resources.Theme getTheme() {
         return mTheme == null ? super.getTheme() : mTheme;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mApkPath = getIntent().getStringExtra(KEY_APK_PATH);
@@ -55,21 +52,15 @@ public class DLProxyActivity extends Activity
 
         initAssetAndResources();
 
-        if (mTargetActivityClazz == null)
-        {
+        if (mTargetActivityClazz == null) {
             launchTargetActivity();
-        } else
-        {
+        } else {
             launchTargetActivity(mTargetActivityClazz);
         }
-
-
     }
 
-    private void initAssetAndResources()
-    {
-        try
-        {
+    private void initAssetAndResources() {
+        try {
             AssetManager assetManager = AssetManager.class.newInstance();
             Method addAssetPath = AssetManager.class.getDeclaredMethod("addAssetPath", String.class);
             addAssetPath.setAccessible(true);
@@ -87,26 +78,20 @@ public class DLProxyActivity extends Activity
             Log.e(TAG, mAssetManager + " ," + mResources);
 
 
-        } catch (InstantiationException e)
-        {
+        } catch (InstantiationException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e)
-        {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-        } catch (NoSuchMethodException e)
-        {
+        } catch (NoSuchMethodException e) {
             e.printStackTrace();
-        } catch (InvocationTargetException e)
-        {
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void checkApkPath()
-    {
-        if (TextUtils.isEmpty(mApkPath))
-        {
+    private void checkApkPath() {
+        if (TextUtils.isEmpty(mApkPath)) {
             throw new IllegalArgumentException("apkPath不能为空！");
         }
 
@@ -120,10 +105,8 @@ public class DLProxyActivity extends Activity
         mApkPath = apkPath;
     }
 
-    private void launchTargetActivity(String activityClazz)
-    {
-        try
-        {
+    private void launchTargetActivity(String activityClazz) {
+        try {
             ClassLoader localClassLoader = ClassLoader.getSystemClassLoader();
             //init dexClassLoader
             DexClassLoader dexClassLoader = new DexClassLoader(mApkPath,
@@ -139,8 +122,7 @@ public class DLProxyActivity extends Activity
             Log.e(TAG, "actClazz = " + actClazz);
             Object activityInstance = actClazz.getConstructor().newInstance();
             Log.e(TAG, "activityInstance = " + activityInstance);
-            for (Method m : actClazz.getMethods())
-            {
+            for (Method m : actClazz.getMethods()) {
                 //  Log.e(TAG, m.getName());
             }
             //invoke setActivityProxy method
@@ -159,36 +141,29 @@ public class DLProxyActivity extends Activity
             onCreate.invoke(activityInstance, new Object[]{bundle});
 
 
-        } catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (NoSuchMethodException e)
-        {
+        } catch (NoSuchMethodException e) {
             e.printStackTrace();
-        } catch (InvocationTargetException e)
-        {
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
-        } catch (InstantiationException e)
-        {
+        } catch (InstantiationException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e)
-        {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
     }
 
 
-    private void launchTargetActivity()
-    {
+    private void launchTargetActivity() {
 
         //getPackageManager for activity
         PackageManager pm = getPackageManager();
         PackageInfo packageInfo = pm.getPackageArchiveInfo(mApkPath, PackageManager.GET_ACTIVITIES);
         ActivityInfo[] activities = packageInfo.activities;
 
-        if (activities != null && activities.length > 0)
-        {
+        if (activities != null && activities.length > 0) {
             String activityClazz = activities[0].name;
             Log.e(TAG, "ActivityClazz = " + activityClazz);
             mTargetActivityClazz = activityClazz;
@@ -198,20 +173,17 @@ public class DLProxyActivity extends Activity
 
 
     @Override
-    public ClassLoader getClassLoader()
-    {
+    public ClassLoader getClassLoader() {
         return mDexClassLoader;
     }
 
     @Override
-    public AssetManager getAssets()
-    {
+    public AssetManager getAssets() {
         return mAssetManager == null ? super.getAssets() : mAssetManager;
     }
 
     @Override
-    public Resources getResources()
-    {
+    public Resources getResources() {
         return mResources == null ? super.getResources() : mResources;
     }
 }
