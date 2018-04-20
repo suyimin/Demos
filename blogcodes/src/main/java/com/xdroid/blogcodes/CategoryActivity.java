@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.xdroid.blogcodes.broadcast.PendingActivity;
 import com.xdroid.blogcodes.colour_app_01.ColourImageActivity;
 import com.xdroid.blogcodes.intentservice.HandlerThreadActivity;
 import com.xdroid.blogcodes.intentservice.IntentServiceActivity;
@@ -52,7 +53,8 @@ public class CategoryActivity extends ActionBarActivity {
                     LargeImageViewActivity.class,
                     ParallaxVpTestActivity.class,
                     RefreshActivity.class,
-                    PendingIntentActivity.class
+                    PendingIntentActivity.class,
+                    PendingActivity.class
             };
 
     @Override
