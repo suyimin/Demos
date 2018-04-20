@@ -54,6 +54,9 @@
         <service
             android:name=".broadcast.RepeatAlarmService"
             android:exported="false" />
+        <service
+            android:name=".bindService.MyService"
+            android:exported="false" />
 
         <activity
             android:name=".intentservice.IntentServiceActivity"
@@ -85,7 +88,8 @@
         <activity android:name=".refresh.listview.ListViewActivity" />
         <activity android:name=".refresh.RefreshActivity" />
         <activity android:name=".pendingintent.PendingIntentActivity" />
-        <activity android:name=".broadcast.PendingActivity"></activity>
+        <activity android:name=".broadcast.PendingActivity"/>
+        <activity android:name=".bindService.BindServiceActivity"/>
     </application>
 
 </manifest>
