@@ -20,6 +20,7 @@ import com.xdroid.blogcodes.mvp.UserLoginActivity;
 import com.xdroid.blogcodes.nav.NavListViewActivity;
 import com.xdroid.blogcodes.nav.NavigationViewActivity;
 import com.xdroid.blogcodes.parallax_viewpager.ParallaxVpTestActivity;
+import com.xdroid.blogcodes.pendingintent.PendingIntentActivity;
 import com.xdroid.blogcodes.performance_01.PerformanceMainActivity;
 import com.xdroid.blogcodes.refresh.RefreshActivity;
 import com.xdroid.blogcodes.toolbar.ToolBarMainActivity;
@@ -50,7 +51,8 @@ public class CategoryActivity extends ActionBarActivity {
                     LeftDrawerLayoutActivity.class,
                     LargeImageViewActivity.class,
                     ParallaxVpTestActivity.class,
-                    RefreshActivity.class
+                    RefreshActivity.class,
+                    PendingIntentActivity.class
             };
 
     @Override
