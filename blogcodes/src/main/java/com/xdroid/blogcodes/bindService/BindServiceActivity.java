@@ -74,7 +74,7 @@ public class BindServiceActivity extends AppCompatActivity {
                 //测试截屏工具类
                 mBitmap = ScreenUtils.snapShotWithoutStatusBar(BindServiceActivity.this);
                 if (mBitmap != null) {
-                    mTextView.setBackground(new BitmapDrawable(getResources(), bg2WhiteBitmap(mBitmap)));
+                    mTextView.setBackground(new BitmapDrawable(getResources(), whiteEdgeBitmap(mBitmap, 800, 10)));
                 }
             }
         });
@@ -91,28 +91,32 @@ public class BindServiceActivity extends AppCompatActivity {
     }
 
     /**
-     * Bitmap 剪切成正方形，然后添加白边
+     * Bitmap 剪切成正方形，压缩,然后添加白边
      *
      * @param bitmap
+     * @param side
+     * @param edge
      * @return
      */
-    public Bitmap bg2WhiteBitmap(Bitmap bitmap) {
+    public Bitmap whiteEdgeBitmap(Bitmap bitmap, int side, int edge) {
         int size = bitmap.getWidth() < bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight();
-        int num = 14;
-        int size2 = size + num;
+        int size2 = side + edge;
+        //剪切成正方形
+        Bitmap bitmap2 = Bitmap.createBitmap(bitmap, 0, 0, size, size);
+        //压缩成100x100
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap2, side, side, true);
         // 背图
-        Bitmap newBitmap = Bitmap.createBitmap(size2, size2, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(newBitmap);
-
+        Bitmap bitmap3 = Bitmap.createBitmap(size2, size2, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap3);
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         canvas.drawARGB(0, 0, 0, 0);
         // 生成白色的
         paint.setColor(Color.WHITE);
-        canvas.drawBitmap(bitmap, num / 2, num / 2, paint);
+        canvas.drawBitmap(scaledBitmap, edge / 2, edge / 2, paint);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
         // 画正方形的
         canvas.drawRect(0, 0, size2, size2, paint);
-        return newBitmap;
+        return bitmap3;
     }
 }
