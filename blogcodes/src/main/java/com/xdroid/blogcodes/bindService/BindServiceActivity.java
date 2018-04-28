@@ -5,6 +5,11 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -69,7 +74,7 @@ public class BindServiceActivity extends AppCompatActivity {
                 //测试截屏工具类
                 mBitmap = ScreenUtils.snapShotWithoutStatusBar(BindServiceActivity.this);
                 if (mBitmap != null) {
-                    mTextView.setBackground(new BitmapDrawable(getResources(), mBitmap));
+                    mTextView.setBackground(new BitmapDrawable(getResources(), bg2WhiteBitmap(mBitmap)));
                 }
             }
         });
@@ -83,5 +88,31 @@ public class BindServiceActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * Bitmap 剪切成正方形，然后添加白边
+     *
+     * @param bitmap
+     * @return
+     */
+    public Bitmap bg2WhiteBitmap(Bitmap bitmap) {
+        int size = bitmap.getWidth() < bitmap.getHeight() ? bitmap.getWidth() : bitmap.getHeight();
+        int num = 14;
+        int size2 = size + num;
+        // 背图
+        Bitmap newBitmap = Bitmap.createBitmap(size2, size2, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(newBitmap);
+
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        // 生成白色的
+        paint.setColor(Color.WHITE);
+        canvas.drawBitmap(bitmap, num / 2, num / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
+        // 画正方形的
+        canvas.drawRect(0, 0, size2, size2, paint);
+        return newBitmap;
     }
 }
